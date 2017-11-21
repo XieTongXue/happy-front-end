@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<!--<link rel="stylesheet" href="https://act.weixin.qq.com/static/cdn/css/wepayui/0.1.1/wepayui.min.css">-->
+<link rel="stylesheet" href="./css/pay.css">
+<link rel="stylesheet" href="./css/keyboard.css">
+<title>易票联合作商户</title>
+</head>
+<!-- 
+	通用说明： 
+	1.模块的隐藏添加class:hide;
+	2.body标签默认绑定ontouchstart事件，激活所有按钮的:active效果
+-->
+<body ontouchstart class="weui-wepay-pay-wrap">
+<div class="pay-top">
+	<div class="pay-shop-info">
+		<div class="content">
+			<img class="shop-logo" src="images/shop-logo.png" alt="商家logo">
+			<span class="shop-name">爱鲜永恒便利店</span>
+		</div>
+	</div>
+	<div class="pay-input-money">
+		<div class="input-left">
+			<span>输入消费金额</span>
+		</div>
+		<div class="input-right">
+			<span>￥</span>
+			<label id="paymoney" type="text"></label>
+		</div>
+	</div>
+	<div class="upper-case">
+		<span class="upper-case-content"></span>
+	</div>
+</div>
+<div class="payinfo">
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<td class="paynum">1</td>
+			<td class="paynum">2</td>
+			<td class="paynum">3</td>
+			<td id="pay-return">
+				<div class="keybord-return"></div>
+			</td>
+		</tr>
+		<tr>
+			<td class="paynum">4</td>
+			<td class="paynum">5</td>
+			<td class="paynum">6</td>
+			<td rowspan="3" class="pay">
+				<a href="javascript:return false;">
+					<div class="a-pay">
+						<p>确认</p>
+						<p>支付</p>
+					</div>
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<td class="paynum">7</td>
+			<td class="paynum">8</td>
+			<td class="paynum">9</td>
+		</tr>
+		<tr>
+			<td id="pay-zero" colspan="2" class="payzero">0</td>
+			<td id="pay-float">.</td>
+		</tr>
+	</table>
+</div>
+</body>
+<script src="./js/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".payinfo").slideDown();
+		var $paymoney = $("#paymoney");
+		// 大写金额
+		var upperCaseMoney = $('.upper-case span');
+		$("#paymoney").focus(function(){
+			$(".payinfo").slideDown();
+       		document.activeElement.blur();
+		});
+		$(".paynum").each(function(){
+			$(this).click(function(){
+				if(($paymoney.text()).indexOf(".") != -1 && ($paymoney.text()).substring(($paymoney.text()).indexOf(".") + 1, ($paymoney.text()).length).length == 2){
+					return;
+				}
+				if($.trim($paymoney.text()) == "0"){
+					return;
+				}
+				if (parseInt($paymoney.text()) > 10000 && $paymoney.text().indexOf(".") == -1) {
+					return;
+				}
+				$('.pay').removeClass('pay-disabled').find('a').attr('href','pay-result.html');
+				$paymoney.text($paymoney.text() + $(this).text());
+				upperCaseMoney.text(digitUppercase($paymoney.text()));
+			});
+		});
+		
+		$("#pay-return").click(function(){
+			$paymoney.text(($paymoney.text()).substring(0, ($paymoney.text()).length - 1));
+			upperCaseMoney.text(digitUppercase($paymoney.text()));
+			if (!$paymoney.text()) {
+				upperCaseMoney.text('');
+				$('.pay').addClass('pay-disabled').find('a').attr('href', 'javascript:return false;');
+			}
+		});
+		
+		$("#pay-zero").click(function(){
+			if(($paymoney.text()).indexOf(".") != -1 && ($paymoney.text()).substring(($paymoney.text()).indexOf(".") + 1, ($paymoney.text()).length).length == 2){
+				return;
+			}
+			if($.trim($paymoney.text()) == "0"){
+				return;
+			}
+			if (parseInt($paymoney.text()) > 10000 && $paymoney.text().indexOf(".") == -1) {
+				return;
+			}
+			$paymoney.text($paymoney.text() + $(this).text());
+		});
+		
+		$("#pay-float").click(function(){
+			if($.trim($paymoney.text()) == ""){
+				return;
+			}
+		
+			if(($paymoney.text()).indexOf(".") != -1){
+				return;
+			}
+			
+			if(($paymoney.text()).indexOf(".") != -1){
+				return;
+			}
+			
+			$paymoney.text($paymoney.text() + $(this).text());
+		});
+		if (!$paymoney.text()) {
+			$('.pay').addClass('pay-disabled');
+		}
+	});
+</script>
+<!--自适应布局-->
+<script>
+	(function () {
+		var designW = 750;  //设计稿宽
+		var font_rate = 100;
+		//适配
+		document.getElementsByTagName("html")[0].style.fontSize = document.body.offsetWidth / designW * font_rate + "px";
+		document.getElementsByTagName("body")[0].style.fontSize = document.body.offsetWidth / designW * font_rate + "px";
+
+		//监测窗口大小变化
+		window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function () {
+			document.getElementsByTagName("html")[0].style.fontSize = document.body.offsetWidth / designW * font_rate + "px";
+			document.getElementsByTagName("body")[0].style.fontSize = document.body.offsetWidth / designW * font_rate + "px";
+		}, false);
+	})();
+</script>
+<!--金额转大写-->
+<script>
+	var digitUppercase = function(n) {
+		var fraction = ['角', '分'];
+		var digit = [
+			'零', '壹', '贰', '叁', '肆',
+			'伍', '陆', '柒', '捌', '玖'
+		];
+		var unit = [
+			['元', '万', '亿'],
+			['', '拾', '佰', '仟']
+		];
+		var head = n < 0 ? '欠' : '';
+		n = Math.abs(n);
+		var s = '';
+		for (var i = 0; i < fraction.length; i++) {
+			s += (digit[Math.floor(n * 10 * Math.pow(10, i)) % 10] + fraction[i]).replace(/零./, '');
+		}
+		s = s || '整';
+		n = Math.floor(n);
+		for (var i = 0; i < unit[0].length && n > 0; i++) {
+			var p = '';
+			for (var j = 0; j < unit[1].length && n > 0; j++) {
+				p = digit[n % 10] + unit[1][j] + p;
+				n = Math.floor(n / 10);
+			}
+			s = p.replace(/(零.)*零$/, '').replace(/^$/, '零') + unit[0][i] + s;
+		}
+		return head + s.replace(/(零.)*零元/, '元')
+						.replace(/(零.)+/g, '零')
+						.replace(/^整$/, '零元整');
+	};
+</script>
+
+</html>
+

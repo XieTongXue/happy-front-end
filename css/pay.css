@@ -1,0 +1,78 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.pay-top {
+
+}
+.pay-shop-info {
+    width: 100%;
+    margin-bottom: 0.2rem;
+}
+.pay-shop-info .content {
+    padding-top: 0.3rem;
+    display: flex;
+    width: 4rem;
+    height: 0.8rem;
+    margin: 0 auto;
+}
+.pay-shop-info .shop-logo{
+    flex: 1;
+    width: 0.8rem;
+    height: 0.8rem;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+.pay-shop-info .shop-name {
+    flex: auto;
+    height: 0.8rem;
+    font-size: 0.42rem;
+    line-height: 0.8rem;
+    margin-left: 0.2rem;
+    color: #2f323a;
+}
+.pay-input-money {
+    width: 6.76rem;
+    height: 1.24rem;
+    line-height: 1.24rem;
+    margin: 0 auto;
+    border: 0.04rem solid #fe9b20;
+    -webkit-border-radius: 0.02rem;
+    -moz-border-radius: 0.02rem;
+    border-radius: 0.02rem;
+    background: #fff;
+}
+.input-left {
+    float: left;
+    font-size: 0.4rem;
+    padding-left: 0.24rem;
+}
+.input-right {
+    font-size: 0.4rem;
+    float: right;
+}
+.input-right label{
+    display: inline-block;
+    width: 2.3rem;
+    font-size: 0.4rem;
+}
+
+.upper-case {
+    margin-right: 0.48rem;
+    font-size: 0.25rem;
+    color: #949494;
+    float: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
