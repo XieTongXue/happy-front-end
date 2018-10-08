@@ -2,7 +2,7 @@
 
 > Vue.js实现垂直方向展开、收缩不定高度模块的JS组件，组件为src中的vertical-toggle.js，使用方法可参考Test.vue
 
-[相关介绍文章](https://blog.csdn.net/Fabulous1111/article/details/79978545)
+[介绍博客](https://blog.csdn.net/Fabulous1111/article/details/79978545)
 
 ## Build Setup
 
