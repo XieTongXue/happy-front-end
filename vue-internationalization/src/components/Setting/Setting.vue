@@ -1,6 +1,6 @@
 <template>
     <div class="setting">
-        setting
+        {{ $t('menu.setting') }}
     </div>
 </template>
 

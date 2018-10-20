@@ -1,6 +1,6 @@
 <template>
     <div class="user-center">
-        UserCenter
+        {{ $t('menu.userCenter') }}
     </div>
 </template>
 

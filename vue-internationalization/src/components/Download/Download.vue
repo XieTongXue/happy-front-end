@@ -1,6 +1,8 @@
 <template>
     <div class="download">
-        download
+        <div class="content">
+            <span>{{ $t('menu.download') }}</span>
+        </div>
     </div>
 </template>
 

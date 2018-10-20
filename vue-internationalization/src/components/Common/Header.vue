@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="language" @click="changeLanguage">切换语言</div>
+    <div class="language" @click="changeLanguage">{{ $t('common.changeLanguage') }}</div>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   methods: {
     changeLanguage () {
-      alert('暂未开发')
+      this.$emit('changeLanguage')
     }
   }
 }
