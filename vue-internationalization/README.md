@@ -1,6 +1,7 @@
 # vue-internationalization
 
-> vue.js国际化demo
+> vue.js结合vue-i18n国际化demo
+[介绍博客:https://blog.csdn.net/Fabulous1111/article/details/79493825](https://blog.csdn.net/Fabulous1111/article/details/79493825)
 
 ## Build Setup
 
