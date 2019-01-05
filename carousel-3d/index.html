@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Carousel-3D</title>
+  <link href="./poster.css" rel="stylesheet">
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+  <div class="poster"> <!--轮播图最外层容器，命名随意-->
+    <!--轮播图区域，class名要与实例化时所用的一致-->
+    <div class = "poster-main" data-setting = '{"width":760,"height":248,"posterWidth":610,"posterHeight":248,"scale":0.85,"dealy":"3000","algin":"middle"}' >
+        <!--当前图片背景框-->
+        <a href="" class="curr-bg j-curr-poster-item" target="_blank"></a>
+        <!--图片列表-->
+        <div class = "poster-list">
+            <a class = "poster-item" href="https://github.com/xietongxue" title="1" class="ms-slide-pic-img" target="_blank" style="width:100%;height: 100%;">
+              <img src="img/1.png" alt="1" width="610" height="248" border="0">
+            </a>
+            <a class = "poster-item" href="https://blog.csdn.net/fabulous1111" title="2" class="ms-slide-pic-img" target="_blank" style="width:100%;height: 100%;">
+              <img src="img/2.png" alt="2" width="610" height="248" border="0">
+            </a>
+            <a class = "poster-item" href="https://www.baidu.com" title="3" class="ms-slide-pic-img" target="_blank" style="width:100%;height: 100%;">
+              <img src="img/3.png" alt="3" width="610" height="248" border="0">
+            </a>
+        </div>
+        <!--按钮-->
+        <button class="btn-left poster-prev-btn"></button>
+        <button class="btn-right poster-next-btn"></button>
+  </div>
+</div>
+</body>
+<script src="./poster.js"></script>
+<script>
+// 用于适配一个网页有多个轮播的情况，只含一个其实只需要new Poster($('.poster-main'));
+$('.poster-main').each(function(index,item){
+    // 初始化轮播图
+    new Poster($(this));
+});
+</script>
+</html>
