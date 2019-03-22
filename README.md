@@ -4,4 +4,4 @@
 [https://github.com/XieTongXue](https://github.com/XieTongXue)
 
 ### 本人csdn博客:
-[https://blog.csdn.net/fabulous1111](https://blog.csdn.net/fabulous1111)
+[https://ecmascripter.blog.csdn.net](https://ecmascripter.blog.csdn.net)
