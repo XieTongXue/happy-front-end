@@ -1,0 +1,40 @@
+{
+  "type": "baidu",
+  "list": [
+    {
+      "url": "https://www.baidu.com",
+      "name": "页面打开测试"
+    },
+    {
+      "url": "https://www.baidu.coom",  
+      "name": "页面初始化请求测试",
+      "ajax": [
+        { "name": "sugrec", "params": ["from", "json", "sid", "_t", "req", "csor"] },
+        { "name": "personalcontent", "params": ["num", "indextype", "_req_seqid", "asyn", "t", "sid"] }
+      ]
+    },
+    {
+      "url": "https://www.baidu.com",
+      "name": "搜索功能测试",
+      "action": [
+        {
+          "type": "wait",
+          "selector": "#kw"
+        },
+        {
+          "type": "input",
+          "selector": "#kw",
+          "text": "新年"
+        },
+        {
+          "type": "click",
+          "selector": "#su"
+        },
+        {
+          "type": "wait",
+          "selector": ".nums_text"
+        }
+      ]
+    }
+  ]
+}
